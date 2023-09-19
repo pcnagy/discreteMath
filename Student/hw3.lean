@@ -31,7 +31,7 @@ a result.
 -- Answer below
 
 def funkom {α β γ : Type} : (β → γ) → (α → β) → (α → γ)
-| f, g => (fun a => f (g a))
+| f, g => fun a => f (g a)
 
 
 /-! 
