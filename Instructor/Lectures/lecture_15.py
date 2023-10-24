@@ -71,3 +71,12 @@ X = Int("X")
 Y = Int("Y")
 solve (X > 2, X < 10, Y == X + 1)
 
+X = Bool('X')
+Y = Bool('Y')
+Z = Bool('Z')
+
+print("my problem")
+solve(Or(X, Or(Not(And(Y, Not(Y))), And(Y, Not(Y)))))
+# Output is [], which makes sense because no matter what !(B AND !B) is True because
+# (B and !B) is always false. Therefore regardless of A and B the output will be true. 
+
