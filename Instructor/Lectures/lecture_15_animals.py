@@ -21,3 +21,5 @@ solve(dog >= 1,
       dog + cat + mouse == 100,
       1500 * dog + 100 * cat + 25 * mouse == 10000)
 # How would you solve this with a Python program?
+
+print("Add %s here" % 3)
