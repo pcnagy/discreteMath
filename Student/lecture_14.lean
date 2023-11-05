@@ -548,3 +548,36 @@ def false_implies_true : False → True := λ f => False.elim f
 /-!
 Prod ==> And
 -/
+inductive Birds_chirping : Prop
+| yep
+| boo
+
+inductive Sky_blue : Prop
+| yep
+
+#check (And Birds_chirping Sky_blue)
+
+theorem both_and : And Birds_chirping Sky_blue := And.intro Birds_chirping.boo Sky_blue.yep
+
+/-!
+Proof Irelevance: doesn't matter what proof is used to prove something
+-/
+
+theorem proof_equal : Birds_chirping.boo = Birds_chirping.yep := by trivial
+
+-- In Prop al proofs are equivalent
+-- Choice of values in Prop can't influence computations
+
+theorem one_or_other : Or Birds_chirping Sky_blue := Or.inl Birds_chirping.yep
+
+theorem or_comm {P Q : Prop} : P ∨ Q → Q ∨ P :=
+λ d =>
+  match d with
+  | Or.inl p => Or.inr p
+  | Or.inr q => Or.inl q
+
+def no (α : Type) := α → Empty
+
+example : no Chaos := λ (c: Chaos) => nomatch c
+
+example: ¬ Raining := λ (r: Raining) => nomatch r
